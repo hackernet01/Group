@@ -1,0 +1,32 @@
+IP                   : 111.88.216.135
+IP Type              : IPv4
+User OS              : Windows 10
+Version              : 10.0;
+Browser              : Firefox
+Location             : Karachi, Pakistan, Asia
+GeoLocation(lat, lon): 24.8614622, 67.0099388
+Currency             : Pakistani Rupee
+IP                   : 111.88.216.135
+IP Type              : IPv4
+User OS              : Windows 10
+Version              : 10.0;
+Browser              : Firefox
+Location             : Karachi, Pakistan, Asia
+GeoLocation(lat, lon): 24.8614622, 67.0099388
+Currency             : Pakistani Rupee
+IP                   : 111.88.216.135
+IP Type              : IPv4
+User OS              : Windows 10
+Version              : 10.0;
+Browser              : Firefox
+Location             : Karachi, Pakistan, Asia
+GeoLocation(lat, lon): 24.8614622, 67.0099388
+Currency             : Pakistani Rupee
+IP                   : 111.88.210.118
+IP Type              : IPv4
+User OS              : Windows 10
+Version              : 10.0;
+Browser              : Firefox
+Location             : Karachi, Pakistan, Asia
+GeoLocation(lat, lon): 24.8614622, 67.0099388
+Currency             : Pakistani Rupee
